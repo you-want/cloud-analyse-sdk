@@ -26,3 +26,36 @@
 - *.cjs.js：构建工具引用
 - *.es.js：支持ESM的构建工具使用
 - index.min.js：CDN引入使用，其中UMD兼容AMD，commonJS，全局引用等等方式
+
+### CDN资源
+
+- https://unpkg.com/cloud-analyse-sdk@0.0.1/dist/index.min.js
+
+### 使用说明
+
+#### npm
+
+```sh
+# npm
+npm i cloud-analyse-sdk
+
+# yarn
+yarn add cloud-analyse-sdk
+
+# pnpm
+pnpm add cloud-analyse-sdk
+```
+
+```js
+import cloudAnalyseSDK from 'cloud-analyse-sdk'
+new cloudAnalyseSDK()
+```
+
+#### cdn
+
+```js
+<script src="https://unpkg.com/cloud-analyse-sdk@0.0.1/dist/index.min.js"></script>
+<script>
+    new cloudAnalyseSDK()
+</script>
+```
