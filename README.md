@@ -20,3 +20,9 @@
 - 目录 src/types：TS定义文件
 - 目录 src/constants：常量
 - 目录 src/utils：工具方法
+
+### 产物 dist
+
+- *.cjs.js：构建工具引用
+- *.es.js：支持ESM的构建工具使用
+- index.min.js：CDN引入使用，其中UMD兼容AMD，commonJS，全局引用等等方式
