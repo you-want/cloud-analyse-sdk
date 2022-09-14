@@ -4,7 +4,7 @@ import { send } from '../utils/send';
 export default function CloudUploader(options: any = {}) {
   let cloudOption = options
 
-  if (cloudOption?.interactive)  {
+  if (cloudOption?.interactive?.open)  {
     interactiveSender()
   }
 
@@ -12,11 +12,11 @@ export default function CloudUploader(options: any = {}) {
     pvSender()
   }
 
-  if (cloudOption?.sys.open) {
+  if (cloudOption?.sys?.open) {
     sysSender()
   }
 
-  if (cloudOption?.all.open) {
+  if (cloudOption?.all?.open) {
     allSender()
   }
 
