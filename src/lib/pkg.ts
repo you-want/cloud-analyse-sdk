@@ -30,10 +30,6 @@ export default function CloudUploader(options: any = {}) {
     delete options.all
   }
 
-  function getConfig() {
-    return cloudOption
-  }
-
   // 交互日志sender发送器
   function interactiveSender() {
     const options = {...cloudOption}

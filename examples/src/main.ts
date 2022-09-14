@@ -9,7 +9,7 @@ import './assets/main.css'
 // 日志中心自己埋点
 import cloudAnalyseSDK from 'cloud-analyse-sdk'
 
-console.log(111, typeof cloudAnalyseSDK);
+console.log(111, cloudAnalyseSDK({}));
 
 
 const cloudLog = (options: {}) => {
