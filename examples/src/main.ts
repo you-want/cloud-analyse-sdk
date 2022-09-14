@@ -10,7 +10,7 @@ import './assets/main.css'
 import cloudAnalyseSDK from 'cloud-analyse-sdk'
 
 const cloudLog = (options: {}) => {
-  if (process.env.NODE_ENV !== 'production') return
+  // if (process.env.NODE_ENV !== 'production') return
   var userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
   // console.log('userInfo', userInfo)
   const cloudOption = {
@@ -35,12 +35,10 @@ const cloudLog = (options: {}) => {
     }
   }
   // console.log('cloudLog', options)
-
-  const CASDK = cloudAnalyseSDK(Object.assign(cloudOption, options))
-  console.log(222, CASDK);
-  
+  cloudAnalyseSDK(cloudOption)  
 }
-cloudLog({})
+
+console.log(11111, cloudAnalyseSDK);
 // Vue.prototype.$cloudLog = cloudLog
 
 const app = createApp(App)

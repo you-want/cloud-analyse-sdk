@@ -47,8 +47,61 @@ pnpm add cloud-analyse-sdk
 ```
 
 ```js
+// 日志中心自己埋点
 import cloudAnalyseSDK from 'cloud-analyse-sdk'
-new cloudAnalyseSDK()
+
+const cloudLog = (options: {}) => {
+  // if (process.env.NODE_ENV !== 'production') return
+  var userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+  // console.log('userInfo', userInfo)
+  const cloudOption = {
+    appid: process.env.NODE_ENV === 'production' ? '1005116' : '1014745',
+    projectId: 'logcenter',
+    date: new Date(),
+    userId: userInfo.workcode,
+    username: userInfo.realname,
+    pageId: document.title,
+    department: userInfo.department,
+    interactive: { // 交互日志
+      open: true
+    },
+    pv: { // 展现日志
+      open: false
+    },
+    sys: { // 系统日志
+      open: false
+    },
+    all: { // 合并日志
+      open: false
+    }
+  }
+  cloudAnalyseSDK(Object)  
+}
+
+// vue2版本
+Vue.prototype.$cloudLog = cloudLog
+
+// 具体交互埋点
+this.$cloudLog({
+    eventId: 'log-access', // 事件ID 规则详见wiki
+    params: {} // 自定义参数
+})
+
+// vue3
+app.config.globalProperties.$cloudLog = cloudLog
+
+// js 中使用方式
+import { getCurrentInstance } from 'vue'
+
+export default {
+  setup () {
+    const { proxy } = getCurrentInstance()
+    proxy.$cloudLog({
+        eventId: 'log-access', // 事件ID 规则详见wiki
+        params: {} // 自定义参数
+    })
+  }
+}
 ```
 
 #### cdn
@@ -56,6 +109,6 @@ new cloudAnalyseSDK()
 ```js
 <script src="https://unpkg.com/cloud-analyse-sdk@0.0.1/dist/index.min.js"></script>
 <script>
-    new cloudAnalyseSDK()
+    cloudAnalyseSDK(options)
 </script>
 ```
