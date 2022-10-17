@@ -1,4 +1,4 @@
-# cloud-analyse-sdk
+# @xes/cloud-analyse
 
 ## 技术
 
@@ -29,7 +29,7 @@
 
 ### CDN资源
 
-- https://unpkg.com/cloud-analyse-sdk@0.0.1/dist/index.min.js
+- https://unpkg.com/@xes/cloud-analyse@0.0.1/dist/index.min.js
 
 ### 使用说明
 
@@ -37,18 +37,18 @@
 
 ```sh
 # npm
-npm i cloud-analyse-sdk
+npm i @xes/cloud-analyse
 
 # yarn
-yarn add cloud-analyse-sdk
+yarn add @xes/cloud-analyse
 
 # pnpm
-pnpm add cloud-analyse-sdk
+pnpm add @xes/cloud-analyse
 ```
 
 ```js
 // 日志中心自己埋点
-import cloudAnalyseSDK from 'cloud-analyse-sdk'
+import cloudAnalyseSDK from '@xes/cloud-analyse'
 
 const cloudLog = (options: {}) => {
   // if (process.env.NODE_ENV !== 'production') return
@@ -65,17 +65,18 @@ const cloudLog = (options: {}) => {
     interactive: { // 交互日志
       open: true
     },
-    pv: { // 展现日志
+    pv: { // 展现日志（待开发）
       open: false
     },
-    sys: { // 系统日志
+    sys: { // 系统日志（待开发）
       open: false
     },
-    all: { // 合并日志
+    all: { // 合并日志（待开发）
       open: false
     }
   }
-  cloudAnalyseSDK(Object)  
+  // 需要把传进来的 options 和 cloudOption 合并为一个 参数
+  cloudAnalyseSDK(Object.assign(cloudOption, options))  
 }
 
 // vue2版本
@@ -87,7 +88,7 @@ this.$cloudLog({
     params: {} // 自定义参数
 })
 
-// vue3
+// vue3版本
 app.config.globalProperties.$cloudLog = cloudLog
 
 // js 中使用方式
@@ -107,8 +108,31 @@ export default {
 #### cdn
 
 ```js
-<script src="https://unpkg.com/cloud-analyse-sdk@0.0.1/dist/index.min.js"></script>
+<script src="https://unpkg.com/@xes/cloud-analyse@0.0.1/dist/index.min.js"></script>
 <script>
     cloudAnalyseSDK(options)
 </script>
 ```
+
+***本地 及 测试环境 调试注意事项***
+
+1、绑定 host （效果可能有延迟？可以多等一会试试）
+
+```sh
+# 前端监控的host
+120.52.32.211 cloud-test.tal.com
+120.52.32.211 dj.xesimg.com
+120.52.32.211 dj.saasz.vdyoo.com
+120.52.32.211 basiclog-test.xev5.com
+120.52.32.211 basiclog-test.xesv5.com
+120.52.32.211 fedata.xesv5.com
+120.52.32.211 upload.xueersi.com
+120.52.32.211 app.xesv5.com 
+120.52.32.211 api.xesv5.com
+```
+
+2、在日志中心查找对应日志（生产环境：'1005116'，测试环境：'1014745'）修改日志详情的 referer （可联系 zhangbin19）
+
+如下：
+
+referer：http://0.0.0.0:8000/,https://cloud-test.tal.com/,http://localhost:8080/

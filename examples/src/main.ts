@@ -7,7 +7,7 @@ import router from './router'
 import './assets/main.css'
 
 // 日志中心自己埋点
-import cloudAnalyseSDK from 'cloud-analyse-sdk'
+import cloudAnalyseSDK from '@xes/cloud-analyse'
 
 const cloudLog = (options: {}) => {
   // if (process.env.NODE_ENV !== 'production') return

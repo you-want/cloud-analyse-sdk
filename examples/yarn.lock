@@ -1146,9 +1146,9 @@ cli-truncate@^2.1.0:
     slice-ansi "^3.0.0"
     string-width "^4.2.0"
 
-cloud-analyse-sdk@^0.0.2:
+@xes/cloud-analyse@^0.0.2:
   version "0.0.2"
-  resolved "https://registry.npmjs.org/cloud-analyse-sdk/-/cloud-analyse-sdk-0.0.2.tgz#883a4c436c5376c95fc058bced9cfe9499993f63"
+  resolved "https://registry.npmjs.org/@xes/cloud-analyse/-/@xes/cloud-analyse-0.0.2.tgz#883a4c436c5376c95fc058bced9cfe9499993f63"
   integrity sha512-jbfvAR7UJoulgZJxvifz4RRCNzRQIW6fzZY9nMwOZ3iAnrf1tMmmoi9BDqBkRTJsShvTrKOfOUwRsuwMwa2F5A==
 
 color-convert@^1.9.0:
